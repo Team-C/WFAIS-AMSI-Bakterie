@@ -8,7 +8,7 @@ package pl.edu.uj.fais.amsi.main;
 
 /**
  *
- * @author student
+ * @author Konrad Welc
  */
 public class GameRules {
     

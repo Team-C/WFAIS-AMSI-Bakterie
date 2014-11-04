@@ -8,7 +8,7 @@ package pl.edu.uj.fais.amsi.map;
 
 /**
  *
- * @author student
+ * @author Wit
  */
 public class Map {
     

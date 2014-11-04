@@ -1,17 +1,31 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package pl.edu.uj.fais.amsi.bio;
 
-import pl.edu.uj.fais.amsi.map.MapObject;
+import pl.edu.uj.fais.amsi.map.Direction;
 
 /**
  *
- * @author student
+ * @author Michał Szura
  */
 public class Worm extends MapObject{
     
+    private Direction wormDirection;
+    private Gene gene;
+    
+    public Worm(){
+        super();
+        this.gene = new Gene();
+    }
+    
+    public void move(){
+        //TODO
+    }
+    
+    public Direction getDirection(){
+        return this.wormDirection;
+    }
+    
+    public Direction calculateDirection(){
+        //TODO
+        return Direction.BOT;
+    }
 }
