@@ -14,18 +14,18 @@ import java.util.Properties;
  */
 public class Game {
 
-    private static Long x = System.nanoTime();
-    private static int gene_min_random_range;
-    private static int gene_max_random_range;
-    private static int worm_starting_weight;
-    private static int worm_weight_threshold;
-    private static int worm_spawn_per_tick;
-    private static int worm_spawning_number;
-    private static int worm_weight_loss_per_tick;
-    private static int bacteria_starting_weight;
-    private static int bacteria_starting_number;
-    private static int bacteria_spawn_per_tick;
-    private static int tick_interval_in_seconds;
+    private Long x = System.nanoTime();
+    private int gene_min_random_range;
+    private int gene_max_random_range;
+    private int worm_starting_weight;
+    private int worm_weight_threshold;
+    private int worm_spawn_per_tick;
+    private int worm_spawning_number;
+    private int worm_weight_loss_per_tick;
+    private int bacteria_starting_weight;
+    private int bacteria_starting_number;
+    private int bacteria_spawn_per_tick;
+    private int tick_interval_in_seconds;
     
     /**************************************
     Methods:
@@ -45,15 +45,17 @@ public class Game {
     int GetTickIntervalInSeconds()
     ******************************************/
     
+    public Game(){
+        LoadRules();
+    }
     
     
     
-    
-    public static boolean RunGame(){
+    public boolean RunGame(){
         return false;
     }
     
-    public static boolean LoadRules(){
+    public boolean LoadRules(){
         
         Properties prop = new Properties();
 	InputStream input = null;
@@ -138,14 +140,8 @@ public class Game {
         return tick_interval_in_seconds;
     }
     
-
-    public static void main(String[] args) {
-        LoadRules();
-        while(RunGame());
-    }
-
     //Very Fast Random
-    public static long randomLong() {
+    public long randomLong() {
         x ^= (x << 21);
         x ^= (x >>> 35);
         x ^= (x << 4);

@@ -8,8 +8,13 @@ package pl.edu.uj.fais.amsi.main;
 
 /**
  *
- * @author Konrad Welc
+ * @author Konrad
  */
-public class GameRules {
+public class Main {
     
+    public static void main(String[] args) {
+        Game game = new Game();
+        while(game.RunGame());
+    }
+
 }
