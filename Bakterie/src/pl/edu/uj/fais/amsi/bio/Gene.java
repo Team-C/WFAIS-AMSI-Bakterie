@@ -15,7 +15,7 @@ public class Gene {
         directionProbabilities = new int[6];
         for (int i = 0; i < directionProbabilities.length; i++) {
             int temp = (int) Game.randomLong();
-            directionProbabilities[i] = temp % Game.getGeneMaxRandomRange();
+            directionProbabilities[i] = temp % Game.rules.getGeneMaxRandomRange();
         }
     }
 
@@ -41,7 +41,7 @@ public class Gene {
     public void mutate() {
         int temp = (int) Game.randomLong();
         int temp2 = (int) Game.randomLong();
-        directionProbabilities[Math.abs(temp) % 6] = temp2 % Game.getGeneMaxRandomRange();
+        directionProbabilities[Math.abs(temp) % 6] = temp2 % Game.rules.getGeneMaxRandomRange();
     }
 
     private double calculateProbabilityFor(int postition) {
