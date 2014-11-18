@@ -13,6 +13,11 @@ public class MapObject {
     public MapObject(){
         this.objectIsAlive = true;
     }
+    
+    public MapObject(int objectPosition){
+        this.objectIsAlive = true;
+        this.objectPosition = objectPosition;
+    }
 
     /**
      * 

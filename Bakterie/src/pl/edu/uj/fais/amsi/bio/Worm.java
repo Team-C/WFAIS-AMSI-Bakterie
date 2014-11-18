@@ -26,6 +26,10 @@ public class Worm extends MapObject{
     
     public Direction calculateDirection(){
         //TODO
+        for (Direction dir : Direction.values()) {
+            gene.getProbability(dir);
+        }
+        
         return Direction.BOT;
     }
 }
