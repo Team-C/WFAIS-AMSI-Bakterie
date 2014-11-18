@@ -19,23 +19,23 @@ import pl.edu.uj.fais.amsi.map.Direction;
 public class Game {
 
     private static Long x = System.nanoTime();
-    private static int geneMinRandomRange;
-    private static int geneMaxRandomRange;
-    private static int wormStartingWeight;
-    private static int wormWeightThreshold;
-    private static int wormSpawnPerTick;
-    private static int wormSpawningNumber;
-    private static int wormWeightLossPerTick;
-    private static int bacteriaStartingWeight;
-    private static int bacteriaStartingNumber;
-    private static int bacteriaSpawnPerTick;
-    private static int tickIntervalInSeconds;
+    private static int GENE_MIN_RANDOM_RANGE;
+    private static int GENE_MAX_RANDOM_RANGE;
+    private static int WORM_STARTING_WEIGHT;
+    private static int WORM_WEIGHT_TRESHOLD;
+    private static int WORM_SPAWN_PER_TICK;
+    private static int WORM_SPAWNING_NUMBER;
+    private static int WORM_WEIGHT_LOSS_PER_TICK;
+    private static int BACTERIA_STARTING_WEIGHT;
+    private static int BACTERIA_STARTING_NUMBER;
+    private static int BACTERIA_SPAWN_PER_TICK;
+    private static int TICK_INTERVAL_IN_SECONDS;
 
-    public static boolean RunGame() {
+    public static boolean runGame() {
         return false;
     }
 
-    public static boolean LoadRules() {
+    public static boolean loadRules() {
 
         Properties prop = new Properties();
         InputStream input = null;
@@ -46,17 +46,17 @@ public class Game {
             // load a properties file
             prop.load(input);
 
-            geneMinRandomRange = Integer.parseInt(prop.getProperty("gene_min_random_range"));
-            geneMaxRandomRange = Integer.parseInt(prop.getProperty("gene_max_random_range"));
-            wormStartingWeight = Integer.parseInt(prop.getProperty("worm_starting_weight"));
-            wormWeightThreshold = Integer.parseInt(prop.getProperty("worm_weight_threshold"));
-            wormSpawnPerTick = Integer.parseInt(prop.getProperty("worm_spawn_per_tick"));
-            wormSpawningNumber = Integer.parseInt(prop.getProperty("worm_spawning_number"));
-            wormWeightLossPerTick = Integer.parseInt(prop.getProperty("worm_weight_loss_per_tick"));
-            bacteriaStartingWeight = Integer.parseInt(prop.getProperty("bacteria_starting_weight"));
-            bacteriaStartingNumber = Integer.parseInt(prop.getProperty("bacteria_starting_number"));
-            bacteriaSpawnPerTick = Integer.parseInt(prop.getProperty("bacteria_spawn_per_tick"));
-            tickIntervalInSeconds = Integer.parseInt(prop.getProperty("tick_interval_in_seconds"));
+            GENE_MIN_RANDOM_RANGE = Integer.parseInt(prop.getProperty("gene_min_random_range"));
+            GENE_MAX_RANDOM_RANGE = Integer.parseInt(prop.getProperty("gene_max_random_range"));
+            WORM_STARTING_WEIGHT = Integer.parseInt(prop.getProperty("worm_starting_weight"));
+            WORM_WEIGHT_TRESHOLD = Integer.parseInt(prop.getProperty("worm_weight_threshold"));
+            WORM_SPAWN_PER_TICK = Integer.parseInt(prop.getProperty("worm_spawn_per_tick"));
+            WORM_SPAWNING_NUMBER = Integer.parseInt(prop.getProperty("worm_spawning_number"));
+            WORM_WEIGHT_LOSS_PER_TICK = Integer.parseInt(prop.getProperty("worm_weight_loss_per_tick"));
+            BACTERIA_STARTING_WEIGHT = Integer.parseInt(prop.getProperty("bacteria_starting_weight"));
+            BACTERIA_STARTING_NUMBER = Integer.parseInt(prop.getProperty("bacteria_starting_number"));
+            BACTERIA_SPAWN_PER_TICK = Integer.parseInt(prop.getProperty("bacteria_spawn_per_tick"));
+            TICK_INTERVAL_IN_SECONDS = Integer.parseInt(prop.getProperty("tick_interval_in_seconds"));
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -75,52 +75,52 @@ public class Game {
     }
 
     public static int getGeneMinRandomRange() {
-        return geneMinRandomRange;
+        return GENE_MIN_RANDOM_RANGE;
     }
 
     public static int getGeneMaxRandomRange() {
-        return geneMaxRandomRange;
+        return GENE_MAX_RANDOM_RANGE;
     }
 
     public static int getWormStaringWeight() {
-        return wormStartingWeight;
+        return WORM_STARTING_WEIGHT;
     }
 
     public static int getWormWeightThreshold() {
-        return wormWeightThreshold;
+        return WORM_WEIGHT_TRESHOLD;
     }
 
     public static int getWormSpawnPerTick() {
-        return wormSpawnPerTick;
+        return WORM_SPAWN_PER_TICK;
     }
 
     public static int getWormStartingNumber() {
-        return wormSpawningNumber;
+        return WORM_SPAWNING_NUMBER;
     }
 
     public static int getWormWeightLossPerTick() {
-        return wormWeightLossPerTick;
+        return WORM_WEIGHT_LOSS_PER_TICK;
     }
 
     public static int getBacteriaStartingWeight() {
-        return bacteriaStartingWeight;
+        return BACTERIA_STARTING_WEIGHT;
     }
 
     public static int getBacteriaStartingNumber() {
-        return bacteriaStartingNumber;
+        return BACTERIA_STARTING_NUMBER;
     }
 
     public static int getBacteriaSpawnPerTick() {
-        return bacteriaSpawnPerTick;
+        return BACTERIA_SPAWN_PER_TICK;
     }
 
     public static int getTickIntervalInSeconds() {
-        return tickIntervalInSeconds;
+        return TICK_INTERVAL_IN_SECONDS;
     }
 
     public static void main(String[] args) {
-        LoadRules();
-        while (RunGame());
+        loadRules();
+        while (runGame());
         Gene test = new Gene();
         for (int i = 0; i < 10; i++) {
             double x=0;
