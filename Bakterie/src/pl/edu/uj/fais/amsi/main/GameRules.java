@@ -47,7 +47,7 @@ public class GameRules {
         Properties prop = new Properties();
         InputStream input = null; 
         try {
-            input = new FileInputStream("src/config.ini");
+            input = new FileInputStream("src/pl/edu/uj/fais/amsi/main/config.ini");
             // load a properties file
             prop.load(input);
         
