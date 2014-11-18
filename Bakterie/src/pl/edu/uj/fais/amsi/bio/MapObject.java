@@ -1,5 +1,7 @@
 package pl.edu.uj.fais.amsi.bio;
 
+import pl.edu.uj.fais.amsi.main.Game;
+
 /**
  *
  * @author Michał Szura
@@ -22,8 +24,9 @@ public class MapObject {
     /**
      * 
      */
-    public void updateOnColision() {
+    public void updateOnColision(MapObject incoming) {
         //TODO
+        //
     }
 
     /**
@@ -31,6 +34,9 @@ public class MapObject {
      */
     public void updateOnTick() {
         //TODO
+        if(objectWeight <= 0){
+            objectIsAlive = false;
+        }
     }
 
     /**

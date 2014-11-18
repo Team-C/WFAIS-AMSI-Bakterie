@@ -9,6 +9,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import pl.edu.uj.fais.amsi.bio.Bacteria;
 import pl.edu.uj.fais.amsi.bio.Gene;
 import pl.edu.uj.fais.amsi.map.Direction;
 
