@@ -12,6 +12,7 @@ import java.util.Properties;
 import pl.edu.uj.fais.amsi.bio.Bacteria;
 import pl.edu.uj.fais.amsi.bio.Gene;
 import pl.edu.uj.fais.amsi.map.Direction;
+import pl.edu.uj.fais.amsi.map.Map;
 
 /**
  *
@@ -30,6 +31,8 @@ public class Game {
         rules = new GameRules();
         while (runGame());
         Gene test = new Gene();
+        
+        /*
         for (int i = 0; i < 10; i++) {
             double x = 0;
             x += test.getProbability(Direction.BOT);
@@ -47,6 +50,10 @@ public class Game {
             System.out.println("|SUM: " + x + "||");
             test.mutate();
         }
+        */
+        
+        Map M = new Map();
+        M.debugPrint();
     }
 
     //Very Fast Random
