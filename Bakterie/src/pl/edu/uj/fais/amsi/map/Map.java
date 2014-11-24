@@ -1,29 +1,33 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/*______________________________________________________________________________
+
+Author:     Wit Szoniec
+
+File:       Map.java
+Version:    0.1
+
+To do:
+- wszystko :(
+
+Optional:
+- lepszy sposób znajdowania losowego pustego miejsca na planszy,
+  dla prawie pełnej planszy może trwać wieki...
+- osobny kontener dla obiektów, aby nie trzeba było przeszukiwać całej mapy
+______________________________________________________________________________*/
 
 package pl.edu.uj.fais.amsi.map;
 
 import pl.edu.uj.fais.amsi.bio.Bacteria;
-import pl.edu.uj.fais.amsi.bio.Gene;
 import pl.edu.uj.fais.amsi.bio.MapObject;
 import pl.edu.uj.fais.amsi.bio.Worm;
 
 import pl.edu.uj.fais.amsi.main.Game;
-import pl.edu.uj.fais.amsi.main.GameRules;
 
-/**
- *
- * @author Wit
- */
 public class Map
 {
-    private int size_x = 15;
-    private int size_y = 15;
+    private final int size_x = 15;
+    private final int size_y = 15;
     
-    private MapObject tiles[] = new MapObject[size_x * size_y];
+    private final MapObject tiles[] = new MapObject[size_x * size_y];
     
     public Map()
     {
@@ -33,22 +37,6 @@ public class Map
        // spawning starting entities
        spawnBacterias(Game.rules.getBacteriaStartingNumber());
        spawnWorms(Game.rules.getWormStartingNumber());
-       
-       
-       
-       
-/*
-        Mapa w UpdateOnTick() wywołuje swoje prywatne funkcje w takiej kolejności:
-            MakeMove():
-                W pętli dla każdego Worm na planszy wywoływana jest funkcja CalculateDirection(), która tylko i wyłącznie losuje kierunek według zadanego wzoru. Zmienia pole worm_direction.
-                W pętli dla każdego Worm na planszy sprawdzana jest poprawność ruchu (kolizja, wyjście poza planszę itd) i zgodnie z narzuconą przez pętlę kolejnością, wykonywane są poprawne ruchy (wywoływane są funkcje Move() w klasie Worm które modyfikują pole object_position). Jeżeli nastąpiła kolizja Worm->Bacteria wywołana jest funkcja UpdateOnColision() w obiekcie Worm i Bacteria. W tej funkcji należy przenieść wagę z bakterii do robaka.
-                W pętli dla każdego obiektu na planszy wywołana jest funkcja UpdateOnTick(), która powinna ustawć pole is_alive na false, jeżeli waga jest równa zero.
-            RemoveDeadObjects() - funkcja usuwa z mapy martwe obiekty.
-            CheckWeightThreshold() - funkcja iteruje po Worms na planszy i w razie przekroczenia wagi usuwa starego robaka i tworzy dwa nowe wywołując na każdym z nich MutateGene(), które wywołuje Mutate() w klasie Gene (losowy wybór jednej z 6 licz i przelosowanie jej).
-            SpawnBacterias() - funckja dodaje nowe bakterie na mapie.
-            SpawnWorms() - funckja dodaje nowe robaki na mapie.
-        Mapa przygotowuje się do kolejnego ticku.
-*/
     }
     
     private boolean isValidLocation(int tileId)
@@ -70,7 +58,11 @@ public class Map
     
     private void removeDeadObjects()
     {
-        
+        for(int i=0; i<size_x*size_y; ++i)
+        {
+            if(tiles[i].isAlive() == false)
+                tiles[i] = null;
+        }
     }
     
     private void spawnBacterias(int n)
@@ -103,17 +95,51 @@ public class Map
     
     private void checkWeightThresholds()
     {
+        /*
+            funkcja iteruje po Worms na planszy i w razie przekroczenia wagi
+            usuwa starego robaka i tworzy dwa nowe wywołując na każdym z nich
+            MutateGene(), które wywołuje Mutate() w klasie Gene
+            (losowy wybór jednej z 6 licz i przelosowanie jej).
+        */
         
+        for(int i=0; i<size_x*size_y; ++i)
+        {
+            
+        }
     }
     
     private void makeMoves()
     {
-        
+        /*
+            W pętli dla każdego Worm na planszy wywoływana jest funkcja
+            CalculateDirection(), która tylko i wyłącznie losuje kierunek według
+            zadanego wzoru. Zmienia pole worm_direction.
+            
+            W pętli dla każdego Worm na planszy sprawdzana jest poprawność ruchu
+            (kolizja, wyjście poza planszę itd) i zgodnie z narzuconą przez pętlę
+            kolejnością, wykonywane są poprawne ruchy (wywoływane są funkcje Move()
+            w klasie Worm które modyfikują pole object_position).
+            Jeżeli nastąpiła kolizja Worm->Bacteria wywołana jest funkcja
+            UpdateOnColision() w obiekcie Worm i Bacteria.
+            W tej funkcji należy przenieść wagę z bakterii do robaka.
+            
+            W pętli dla każdego obiektu na planszy wywołana jest funkcja
+            UpdateOnTick(), która powinna ustawć pole is_alive na false,
+            jeżeli waga jest równa zero.
+        */
     }
     
     public void updateOnTick()
     {
-        
+        /*
+            Mapa w UpdateOnTick() wywołuje swoje prywatne funkcje w takiej kolejności:
+                MakeMove()
+                RemoveDeadObjects()
+                CheckWeightThreshold()
+                SpawnBacterias()
+                SpawnWorms()
+            Mapa przygotowuje się do kolejnego ticku.
+        */
     }
     
     public MapObject getMapObject(int tileId)
@@ -168,6 +194,5 @@ public class Map
             
             System.out.print("\n");
         }
-    }
-    
+    }   
 }
