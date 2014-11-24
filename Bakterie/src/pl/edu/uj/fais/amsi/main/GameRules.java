@@ -21,7 +21,7 @@ public class GameRules {
     private final int WORM_STARTING_WEIGHT;
     private final int WORM_WEIGHT_TRESHOLD;
     private final int WORM_SPAWN_PER_TICK;
-    private final int WORM_SPAWNING_NUMBER;
+    private final int WORM_STARTING_NUMBER;
     private final int WORM_WEIGHT_LOSS_PER_TICK;
     private final int BACTERIA_STARTING_WEIGHT;
     private final int BACTERIA_STARTING_NUMBER;
@@ -35,7 +35,7 @@ public class GameRules {
         WORM_STARTING_WEIGHT = Load("worm_starting_weight");
         WORM_WEIGHT_TRESHOLD = Load("worm_weight_threshold");
         WORM_SPAWN_PER_TICK = Load("worm_spawn_per_tick");
-        WORM_SPAWNING_NUMBER = Load("worm_spawning_number");
+        WORM_STARTING_NUMBER = Load("worm_starting_number");
         WORM_WEIGHT_LOSS_PER_TICK = Load("worm_weight_loss_per_tick");
         BACTERIA_STARTING_WEIGHT = Load("bacteria_starting_weight");
         BACTERIA_STARTING_NUMBER = Load("bacteria_starting_number");
@@ -88,7 +88,7 @@ public class GameRules {
     }
 
     public int getWormStartingNumber() {
-        return WORM_SPAWNING_NUMBER;
+        return WORM_STARTING_NUMBER;
     }
 
     public int getWormWeightLossPerTick() {
