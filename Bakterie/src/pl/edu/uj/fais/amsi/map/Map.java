@@ -19,7 +19,6 @@ package pl.edu.uj.fais.amsi.map;
 import pl.edu.uj.fais.amsi.bio.Bacteria;
 import pl.edu.uj.fais.amsi.bio.MapObject;
 import pl.edu.uj.fais.amsi.bio.Worm;
-
 import pl.edu.uj.fais.amsi.main.Game;
 
 public class Map
@@ -31,12 +30,14 @@ public class Map
     
     public Map()
     {
-       for(int i=0; i<size_x*size_y; ++i)
-           tiles[i] = null;
+        for(int i=0; i<size_x*size_y; ++i)
+            tiles[i] = null;
        
-       // spawning starting entities
-       spawnBacterias(Game.rules.getBacteriaStartingNumber());
-       spawnWorms(Game.rules.getWormStartingNumber());
+        // spawning starting entities
+        spawnBacterias(Game.rules.getBacteriaStartingNumber());
+        spawnWorms(Game.rules.getWormStartingNumber());
+
+        debugPrint();
     }
     
     private boolean isValidLocation(int tileId)
@@ -54,6 +55,102 @@ public class Map
             return false;
         else
             return true;
+    }
+    
+    private int getNeighbour(int tileId, Direction d)
+    {
+        int x = tileId%size_x;
+        int y = tileId/size_y;
+        int neighbourId = 0;
+        
+        if(x < 0 || x >= size_x)
+            return -1;
+        else if(y < 0 || y >= size_y)
+            return -1;
+        else if(y == size_y-1 && x%2 == 1)
+            return -1;
+        
+        if(d == Direction.TOP)
+        {
+            if(y == 0) return -2;
+            
+            if(x%2 == 0)
+            {
+                neighbourId = tileId - size_x;
+            }
+            else
+            {
+                neighbourId = tileId - size_x;
+            }
+        }  
+        else if(d == Direction.TOP_RIGHT)
+        {
+            if(x%2 == 0)
+            {
+                if(x == size_x-1) return -2;
+                if(y == 0) return -2;
+                neighbourId = tileId - size_x + 1;
+            }
+            else
+            {
+                neighbourId = tileId + 1;
+            }
+        }   
+        else if(d == Direction.TOP_LEFT)
+        {
+            if(x%2 == 0)
+            {
+                if(y == 0) return -2;
+                if(x == 0) return -2;
+                neighbourId = tileId - size_x - 1;
+            }
+            else
+            {
+                neighbourId = tileId - 1;
+            }
+        }   
+        else if(d == Direction.BOT)
+        {
+            if(y == size_y-1) return -2;
+            
+            if(x%2 == 0)
+            {
+                neighbourId = tileId + size_x;
+            }
+            else
+            {
+                if(y == size_y-2) return -2;
+                neighbourId = tileId + size_x;
+            }
+        }   
+        else if(d == Direction.BOT_RIGHT)
+        {
+            if(x%2 == 0)
+            {
+                if(x == size_x-1) return -2;
+                if(y == size_y-1) return -2;
+                neighbourId = tileId + 1;
+            }
+            else
+            {
+                neighbourId = tileId + size_x + 1;
+            }
+        }
+        else if(d == Direction.BOT_LEFT)
+        {
+            if(x%2 == 0)
+            {
+                if(x == 0) return -2;
+                if(y == size_y-1) return -2;
+                neighbourId = tileId - 1;
+            }
+            else
+            {
+                neighbourId = tileId + size_x - 1;
+            }
+        }
+
+        return neighbourId;
     }
     
     private void removeDeadObjects()
@@ -93,21 +190,6 @@ public class Map
         }
     }
     
-    private void checkWeightThresholds()
-    {
-        /*
-            funkcja iteruje po Worms na planszy i w razie przekroczenia wagi
-            usuwa starego robaka i tworzy dwa nowe wywołując na każdym z nich
-            MutateGene(), które wywołuje Mutate() w klasie Gene
-            (losowy wybór jednej z 6 licz i przelosowanie jej).
-        */
-        
-        for(int i=0; i<size_x*size_y; ++i)
-        {
-            
-        }
-    }
-    
     private void makeMoves()
     {
         /*
@@ -131,16 +213,16 @@ public class Map
     
     public void updateOnTick()
     {
-        /*
-            Mapa w UpdateOnTick() wywołuje swoje prywatne funkcje w takiej kolejności:
-                MakeMove()
-                RemoveDeadObjects()
-                CheckWeightThreshold()
-                SpawnBacterias()
-                SpawnWorms()
-            Mapa przygotowuje się do kolejnego ticku.
-        */
-    }
+        // executing moves
+        makeMoves();
+        
+        // removing dead objects
+        removeDeadObjects();
+        
+        // spawning starting entities
+        spawnBacterias(Game.rules.getBacteriaSpawnPerTick());
+        spawnWorms(Game.rules.getWormSpawnPerTick());
+    }   
     
     public MapObject getMapObject(int tileId)
     {
@@ -194,5 +276,7 @@ public class Map
             
             System.out.print("\n");
         }
+        
+        System.out.print("\n");
     }   
 }

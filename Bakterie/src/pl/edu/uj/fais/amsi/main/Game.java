@@ -21,6 +21,7 @@ import pl.edu.uj.fais.amsi.map.Map;
 public class Game {
 
     private static Long x = System.nanoTime();
+    private static Map map;
     public static GameRules rules;
 
     public static boolean runGame() {
@@ -29,6 +30,7 @@ public class Game {
 
     public static void main(String[] args) {
         rules = new GameRules();
+        map = new Map();
         while (runGame());
         Gene test = new Gene();
         
@@ -51,9 +53,6 @@ public class Game {
             test.mutate();
         }
         */
-        
-        Map M = new Map();
-        M.debugPrint();
     }
 
     //Very Fast Random
