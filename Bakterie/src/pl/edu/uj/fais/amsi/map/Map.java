@@ -3,10 +3,10 @@
 Author:     Wit Szoniec
 
 File:       Map.java
-Version:    0.1
+Version:    1.0
 
 To do:
-- wszystko :(
+
 
 Optional:
 - lepszy sposób znajdowania losowego pustego miejsca na planszy,
@@ -238,6 +238,15 @@ public class Map
     {
         // executing moves
         makeMoves();
+        
+        // updating objects
+        for(int i=0; i<size_x*size_y; ++i)
+        {
+            if(tiles[i] != null)
+            {
+                tiles[i].updateOnTick();
+            }
+        }
         
         // removing dead objects
         removeDeadObjects();
