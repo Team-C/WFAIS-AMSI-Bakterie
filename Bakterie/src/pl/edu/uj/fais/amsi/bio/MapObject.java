@@ -59,5 +59,4 @@ public class MapObject {
     public boolean isAlive() {
         return this.objectIsAlive;
     }
-
 }

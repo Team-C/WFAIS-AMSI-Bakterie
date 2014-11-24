@@ -19,6 +19,13 @@ public class Worm extends MapObject {
         this.objectWeight = Game.rules.getWormStaringWeight();
         this.gene = new Gene();
     }
+    
+    public Worm(int objectPosition) {
+        super();
+        this.objectWeight = Game.rules.getWormStaringWeight();
+        this.gene = new Gene();
+        this.objectPosition = objectPosition;
+    }
 
     /**
      *
@@ -36,7 +43,7 @@ public class Worm extends MapObject {
         //TODO
     }
 
-    public void move() {
+    public void move(int destination) {
         //TODO
     }
 

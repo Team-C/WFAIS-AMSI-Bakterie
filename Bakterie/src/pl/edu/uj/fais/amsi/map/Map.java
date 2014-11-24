@@ -16,6 +16,8 @@ ______________________________________________________________________________*/
 
 package pl.edu.uj.fais.amsi.map;
 
+import java.util.LinkedList;
+import java.util.List;
 import pl.edu.uj.fais.amsi.bio.Bacteria;
 import pl.edu.uj.fais.amsi.bio.MapObject;
 import pl.edu.uj.fais.amsi.bio.Worm;
@@ -171,7 +173,7 @@ public class Map
             if(isValidLocation(index) == true)
             {
                 --n;
-                tiles[index] = new Bacteria();
+                tiles[index] = new Bacteria(index);
             }
         }
     }
@@ -185,30 +187,51 @@ public class Map
             if(isValidLocation(index) == true)
             {
                 --n;
-                tiles[index] = new Worm();
+                tiles[index] = new Worm(index);
             } 
         }
     }
     
     private void makeMoves()
     {
-        /*
-            W pętli dla każdego Worm na planszy wywoływana jest funkcja
-            CalculateDirection(), która tylko i wyłącznie losuje kierunek według
-            zadanego wzoru. Zmienia pole worm_direction.
+        Direction d = null;
+        int destination;
+        List<Worm> list = new LinkedList();
+        
+        for(int i=0; i<size_x*size_y; ++i)
+        {
+            if(tiles[i] instanceof Worm)
+            {
+                list.add((Worm)tiles[i]);  
+            }
+        }
+        
+        for(Worm worm : list)
+        {
+            destination = getNeighbour(worm.getPosition(), worm.calculateDirection());
             
-            W pętli dla każdego Worm na planszy sprawdzana jest poprawność ruchu
-            (kolizja, wyjście poza planszę itd) i zgodnie z narzuconą przez pętlę
-            kolejnością, wykonywane są poprawne ruchy (wywoływane są funkcje Move()
-            w klasie Worm które modyfikują pole object_position).
-            Jeżeli nastąpiła kolizja Worm->Bacteria wywołana jest funkcja
-            UpdateOnColision() w obiekcie Worm i Bacteria.
-            W tej funkcji należy przenieść wagę z bakterii do robaka.
-            
-            W pętli dla każdego obiektu na planszy wywołana jest funkcja
-            UpdateOnTick(), która powinna ustawć pole is_alive na false,
-            jeżeli waga jest równa zero.
-        */
+            if(destination >= 0)
+            {
+                if(tiles[destination] != null)
+                {
+                    tiles[worm.getPosition()].updateOnColision(tiles[destination]);
+                }
+                else
+                {
+                    tiles[destination] = tiles[worm.getPosition()];
+                    tiles[worm.getPosition()] = null;
+                    worm.move(destination);
+                }
+            }
+        }
+
+        for(int i=0; i<size_x*size_y; ++i)
+        {
+            if(tiles[i] != null)
+            {
+                tiles[i].updateOnTick(); 
+            }
+        }
     }
     
     public void updateOnTick()

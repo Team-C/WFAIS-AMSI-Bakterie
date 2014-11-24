@@ -13,4 +13,10 @@ public class Bacteria extends MapObject{
         super();
         this.objectWeight = Game.rules.getBacteriaStartingWeight();
     }
+    
+    public Bacteria(int objectPosition){
+        super();
+        this.objectWeight = Game.rules.getBacteriaStartingWeight();
+        this.objectPosition = objectPosition;
+    }
 }
