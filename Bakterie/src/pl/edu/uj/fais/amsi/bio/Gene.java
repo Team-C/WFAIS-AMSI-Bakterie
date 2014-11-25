@@ -14,12 +14,13 @@ public class Gene {
     public Gene() {
         directionProbabilities = new int[6];
         for (int i = 0; i < directionProbabilities.length; i++) {
-            directionProbabilities[i] = Game.randomInt(Game.rules.getGeneMaxRandomRange());
+            directionProbabilities[i] = Game.rules.getGeneMaxRandomRange() / 6;
         }
     }
 
     public Gene(int[] directionProbabilities) {
-        System.arraycopy(directionProbabilities, 0, this.directionProbabilities, 0, directionProbabilities.length);
+        this.directionProbabilities = directionProbabilities.clone();
+        //System.arraycopy(directionProbabilities, 0, this.directionProbabilities, 0, directionProbabilities.length);
     }
 
     /**
@@ -49,6 +50,21 @@ public class Gene {
             default:
                 return 0;
         }
+    }
+    
+    public void debugGene(){
+        System.out.print(this.toString()+" => ");
+        System.out.print(calculateProbabilityFor(0)+" + ");
+        System.out.print(calculateProbabilityFor(1)+" + ");
+        System.out.print(calculateProbabilityFor(2)+" + ");
+        System.out.print(calculateProbabilityFor(3)+" + ");
+        System.out.print(calculateProbabilityFor(4)+" + ");
+        System.out.print(calculateProbabilityFor(5)+" = ");
+        double bottom = 0.0;
+        for (int i = 0; i < directionProbabilities.length; i++) {
+            bottom += calculateProbabilityFor(i);
+        }
+        System.out.println(bottom);
     }
 
     public void mutate() {

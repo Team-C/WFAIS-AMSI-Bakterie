@@ -24,4 +24,25 @@ public enum Direction {
         }
         return null;
     }
+    
+    public static int getDirNr(Direction i) {
+        if(i == null){
+            return 0;
+        }
+        switch (i) {
+            case TOP_LEFT:
+                return 0;
+            case TOP:
+                return 1;
+            case TOP_RIGHT:
+                return 2;
+            case BOT_RIGHT:
+                return 3;
+            case BOT:
+                return 4;
+            case BOT_LEFT:
+                return 5;
+        }
+        return 0;
+    }
 }

@@ -33,26 +33,6 @@ public class Game {
         map = new Map();
         while (runGame());
         Gene test = new Gene();
-
-        /*
-         for (int i = 0; i < 10; i++) {
-         double x = 0;
-         x += test.getProbability(Direction.BOT);
-         x += test.getProbability(Direction.BOT_LEFT);
-         x += test.getProbability(Direction.BOT_RIGHT);
-         x += test.getProbability(Direction.TOP);
-         x += test.getProbability(Direction.TOP_LEFT);
-         x += test.getProbability(Direction.TOP_RIGHT);
-         System.out.print(test.getProbability(Direction.TOP_LEFT) + "|");
-         System.out.print(test.getProbability(Direction.TOP) + "|");
-         System.out.print(test.getProbability(Direction.TOP_RIGHT) + "|");
-         System.out.print(test.getProbability(Direction.BOT_RIGHT) + "|");
-         System.out.print(test.getProbability(Direction.BOT) + "|");
-         System.out.print(test.getProbability(Direction.BOT_LEFT) + "|");
-         System.out.println("|SUM: " + x + "||");
-         test.mutate();
-         }
-         */
     }
 
     //Very Fast Random

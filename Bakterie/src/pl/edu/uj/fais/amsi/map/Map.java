@@ -39,6 +39,11 @@ public class Map {
         spawnWorms(Game.rules.getWormStartingNumber());
 
         debugPrint();
+        for (int i = 0; i < 10000; i++) {
+            updateOnTick();
+            System.out.println("-----TICK-----");
+        }
+        debugPrint();
     }
 
     private boolean isValidLocation(int tileId) {
@@ -149,7 +154,7 @@ public class Map {
 
     private void removeDeadObjects() {
         for (int i = 0; i < size_x * size_y; ++i) {
-            if (tiles[i].isAlive() == false) {
+            if (tiles[i] != null && tiles[i].isAlive() == false) {
                 tiles[i] = null;
             }
         }
@@ -199,12 +204,6 @@ public class Map {
                     tiles[worm.getPosition()] = null;
                     worm.move(destination);
                 }
-            }
-        }
-
-        for (int i = 0; i < size_x * size_y; ++i) {
-            if (tiles[i] != null) {
-                tiles[i].updateOnTick();
             }
         }
     }

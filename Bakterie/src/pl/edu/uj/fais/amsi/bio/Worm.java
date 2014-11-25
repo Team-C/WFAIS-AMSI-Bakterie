@@ -38,10 +38,12 @@ public class Worm extends MapObject {
             object.decreaseWeight(5);
             this.increaseWeight(5);
             Map.setMapObject(object);
+            System.out.println("    FIGHT! FIGHT! FIGHT!");
         }
         if (object instanceof Bacteria) {
             this.increaseWeight(object.getWeight());
             if (canSplit()) {//Split
+                System.out.println("    Split");
                 Worm newWorm = new Worm(this.wormDirection, this.gene, object.getPosition(), this.getWeight() / 2);
                 this.decreaseWeight(this.getWeight() / 2);
                 this.gene.mutate();
@@ -61,6 +63,7 @@ public class Worm extends MapObject {
      */
     @Override
     public void updateOnTick() {
+        //System.out.println("Update");
         this.decreaseWeight(Game.rules.getWormWeightLossPerTick());
     }
 
@@ -80,11 +83,15 @@ public class Worm extends MapObject {
         double sum = 0.0;
         int abstractNumber = 1000000;
         int temp = Game.randomInt(abstractNumber);
-        double random = temp / (abstractNumber - 1);// -1 because % will mean that there can be no 1.0 result
+        double random = temp / (double) (abstractNumber - 1);// -1 because % will mean that there can be no 1.0 result
         for (int i = 0; i < 6; i++) {
             if ((sum + probabilites[i]) >= random) {
-                wormDirection = Direction.getDir(i);
-                return Direction.getDir(i);
+                Direction newDirection = Direction.getDir((i + Direction.getDirNr(wormDirection)) % 6);
+                //System.out.println("Temp: " + temp + " Random: " + random + " AbstractNumber:" + abstractNumber);
+                //gene.debugGene();
+                //System.out.println("Worm: " + this.toString() + " Drirection: " + newDirection);
+                wormDirection = newDirection;
+                return newDirection;
             } else {
                 sum += probabilites[i];
             }

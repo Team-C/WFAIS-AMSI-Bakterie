@@ -68,6 +68,7 @@ public class MapObject {
         this.objectWeight -= decrease;
         if (this.objectWeight <= 0) {
             this.objectIsAlive = false;
+            System.out.println("   Worm Starved! " + this.toString());
         }
     }
 
