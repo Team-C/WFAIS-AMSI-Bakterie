@@ -1,56 +1,87 @@
 package pl.edu.uj.fais.amsi.bio;
 
-import pl.edu.uj.fais.amsi.main.Game;
-
 /**
  *
  * @author Michał Szura
  */
 public class MapObject {
 
-    protected int objectPosition;
-    protected int objectWeight;
-    protected boolean objectIsAlive;
-    
-    public MapObject(){
+    private int objectPosition;
+    private int objectWeight;
+    private boolean objectIsAlive;
+
+    public MapObject() {
         this.objectIsAlive = true;
     }
-    
-    public MapObject(int objectPosition){
+
+    public MapObject(int objectWeight) {
         this.objectIsAlive = true;
+        this.objectWeight = objectWeight;
+    }
+
+    public MapObject(int objectWeight, int objectPosition) {
+        this.objectIsAlive = true;
+        this.objectWeight = objectWeight;
         this.objectPosition = objectPosition;
     }
 
     /**
-     * 
+     *
      */
     public void updateOnColision(MapObject incoming) {
-        //TODO
-        //
+        //Map Object Does Not Care For Your Collisions
     }
 
     /**
-     * 
+     *
      */
     public void updateOnTick() {
-        //TODO
-        if(objectWeight <= 0){
+        if (objectWeight <= 0) {
             objectIsAlive = false;
         }
     }
 
     /**
-     * Returns Objects position.
+     * @return Objects position
      */
     public int getPosition() {
         return this.objectPosition;
     }
 
     /**
-     * Returns Objects weight.
+     * @return Objects weight
      */
     public int getWeight() {
         return this.objectWeight;
+    }
+
+    /**
+     * Sets Objects weight.
+     *
+     * @param objectWeight
+     */
+    public void setWeight(int objectWeight) {
+        this.objectWeight = objectWeight;
+    }
+
+    public void decreaseWeight(int decrease) {
+        this.objectWeight -= decrease;
+        if (this.objectWeight <= 0) {
+            this.objectIsAlive = false;
+        }
+    }
+
+    public void increaseWeight(int increase) {
+        this.objectWeight += increase;
+    }
+
+    /**
+     * Sets Objects position.
+     *
+     * @param objectPosition
+     */
+    public void setPosition(int objectPosition) {
+        this.objectPosition = objectPosition;
     }
 
     /**
@@ -59,4 +90,9 @@ public class MapObject {
     public boolean isAlive() {
         return this.objectIsAlive;
     }
+
+    public void setIsAlive(boolean objectIsAlive) {
+        this.objectIsAlive = objectIsAlive;
+    }
+
 }

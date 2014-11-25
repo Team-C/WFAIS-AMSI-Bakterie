@@ -14,9 +14,22 @@ public class Gene {
     public Gene() {
         directionProbabilities = new int[6];
         for (int i = 0; i < directionProbabilities.length; i++) {
-            int temp = (int) Game.randomLong();
-            directionProbabilities[i] = temp % Game.rules.getGeneMaxRandomRange();
+            directionProbabilities[i] = Game.randomInt(Game.rules.getGeneMaxRandomRange());
         }
+    }
+
+    public Gene(int[] directionProbabilities) {
+        System.arraycopy(directionProbabilities, 0, this.directionProbabilities, 0, directionProbabilities.length);
+    }
+
+    /**
+     * Copy constructor.
+     *
+     * @param gene
+     */
+    public Gene(Gene gene) {
+        this(gene.directionProbabilities);
+        mutate();
     }
 
     public double getProbability(Direction dir) {
@@ -39,9 +52,7 @@ public class Gene {
     }
 
     public void mutate() {
-        int temp = (int) Game.randomLong();
-        int temp2 = (int) Game.randomLong();
-        directionProbabilities[Math.abs(temp) % 6] = temp2 % Game.rules.getGeneMaxRandomRange();
+        directionProbabilities[Game.randomInt(6)] = Game.randomInt(Game.rules.getGeneMaxRandomRange());
     }
 
     private double calculateProbabilityFor(int postition) {
@@ -50,6 +61,7 @@ public class Gene {
         for (int i = 0; i < directionProbabilities.length; i++) {
             bottom += Math.exp(-directionProbabilities[i]);
         }
-        return top/bottom;
+        return top / bottom;
     }
+
 }
