@@ -23,16 +23,16 @@ class MouseListener extends MouseAdapter {
 
     //inner class inside DrawingPanel
     public void mouseClicked(MouseEvent e) {
-        int x = e.getX();
-        int y = e.getY();
-        //mPt.x = x;
-        //mPt.y = y;
-        Point p = new Point(HexOperations.pxtoHex(e.getX(), e.getY()));
-        if (p.x < 0 || p.y < 0 || p.x >= GameWindow.BSIZE || p.y >= GameWindow.BSIZE) {
-            return;
-        }
-        GameWindow.board[p.x][p.y] = (int) 'X';
+        GameWindow.updateBoard();
         outer.repaint();
+//        int x = e.getX();
+//        int y = e.getY();
+//        Point p = new Point(HexOperations.pxtoHex(e.getX(), e.getY()));
+//        if (p.x < 0 || p.y < 0 || p.x >= GameWindow.BSIZE || p.y >= GameWindow.BSIZE) {
+//            return;
+//        }
+//        GameWindow.board[p.x][p.y] = (int) 'X';
+//        outer.repaint();
     }
 
 }

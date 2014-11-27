@@ -30,6 +30,8 @@ class DrawingPanel extends JPanel {
 
         MouseListener ml = new MouseListener(this);
         addMouseListener(ml);
+        KeyListener kl = new KeyListener(this);
+        addKeyListener(kl);
     }
 
     public void paintComponent(Graphics g) {

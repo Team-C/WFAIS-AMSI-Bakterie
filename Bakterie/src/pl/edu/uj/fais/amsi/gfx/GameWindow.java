@@ -34,18 +34,13 @@ public class GameWindow {
     final static int SCRSIZE = HEXSIZE * (BSIZE + 1) + BORDERS * 3; //screen size (vertical dimension).
 
     public static int[][] board = new int[BSIZE][BSIZE];
-    DrawingPanel panel = new DrawingPanel();
+    private static DrawingPanel panel = new DrawingPanel();
     final static int WAITTIME = Game.rules.getTickIntervalInSeconds();
 
     public GameWindow() {
 
         initGame();
         createAndShowGUI();
-//        for (int i = 0; i < 20; i++) {
-//            Game.updateMap();
-//            updateBoard();
-//            panel.repaint();
-//        }
     }
 
     void initGame() {
@@ -89,7 +84,8 @@ public class GameWindow {
         frame.setVisible(true);
     }
 
-    private void updateBoard() {
+    public static void updateBoard() {
+        Game.updateMap();
         for (int i = 0; i < BSIZE; i++) {
             for (int j = 0; j < BSIZE; j++) {
                 MapObject temp = Game.getMapObject(i, j);
@@ -101,5 +97,6 @@ public class GameWindow {
                 }
             }
         }
+        panel.repaint();
     }
 }
