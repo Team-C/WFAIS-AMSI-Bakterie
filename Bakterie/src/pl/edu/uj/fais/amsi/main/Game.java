@@ -9,8 +9,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import javax.swing.SwingUtilities;
 import pl.edu.uj.fais.amsi.bio.Bacteria;
 import pl.edu.uj.fais.amsi.bio.Gene;
+import pl.edu.uj.fais.amsi.bio.MapObject;
+import pl.edu.uj.fais.amsi.gfx.GameWindow;
 import pl.edu.uj.fais.amsi.map.Direction;
 import pl.edu.uj.fais.amsi.map.Map;
 
@@ -31,8 +34,20 @@ public class Game {
     public static void main(String[] args) {
         rules = new GameRules();
         map = new Map();
-        while (runGame());
-        Gene test = new Gene();
+        //while (runGame());
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new GameWindow();
+            }
+        });
+    }
+
+    public static void updateMap() {
+        map.updateOnTick();
+    }
+
+    public static MapObject getMapObject(int x, int y) {
+        return map.getMapObject(x, y);
     }
 
     //Very Fast Random

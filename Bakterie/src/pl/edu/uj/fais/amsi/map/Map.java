@@ -38,12 +38,12 @@ public class Map {
         spawnBacterias(Game.rules.getBacteriaStartingNumber());
         spawnWorms(Game.rules.getWormStartingNumber());
 
-        debugPrint();
-        for (int i = 0; i < 10000; i++) {
-            updateOnTick();
-            System.out.println("-----TICK-----");
-        }
-        debugPrint();
+//        debugPrint();
+//        for (int i = 0; i < 10000; i++) {
+//            updateOnTick();
+//            System.out.println("-----TICK-----");
+//        }
+//        debugPrint();
     }
 
     private boolean isValidLocation(int tileId) {
