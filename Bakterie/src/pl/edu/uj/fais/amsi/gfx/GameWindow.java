@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pl.edu.uj.fais.amsi.gfx;
 
 import java.awt.Color;
@@ -15,7 +10,7 @@ import pl.edu.uj.fais.amsi.main.Game;
 
 /**
  *
- * @author student
+ * @author Michal Szura & Bartosz Bereza
  */
 public class GameWindow {
 
@@ -23,17 +18,17 @@ public class GameWindow {
     final static Color COLOURBACK = Color.WHITE;
     final static Color COLOURCELL = Color.ORANGE;
     final static Color COLOURGRID = Color.BLACK;
-    final static Color COLOURONE = new Color(255, 255, 255, 200);
-    final static Color COLOURONETXT = Color.BLUE;
-    final static Color COLOURTWO = new Color(0, 0, 0, 200);
-    final static Color COLOURTWOTXT = new Color(255, 100, 255);
-    final static int EMPTY = 0;
+    final static Color COLOURONE = new Color(45, 136, 45, 255);
+    final static Color COLOURONETXT = Color.WHITE;
+    final static Color COLOURTWO = new Color(152, 219, 245, 255);
+    final static Color COLOURTWOTXT = new Color(255, 88, 88);
+    final static String EMPTY = "";
     final static int BSIZE = 15; //board size.
     final static int HEXSIZE = 60;	//hex size in pixels
     final static int BORDERS = 15;
     final static int SCRSIZE = HEXSIZE * (BSIZE + 1) + BORDERS * 3; //screen size (vertical dimension).
 
-    public static int[][] board = new int[BSIZE][BSIZE];
+    public static String[][] board = new String[BSIZE][BSIZE];
     private static DrawingPanel panel = new DrawingPanel();
     final static int WAITTIME = Game.rules.getTickIntervalInSeconds();
 
@@ -45,9 +40,9 @@ public class GameWindow {
 
     void initGame() {
 
-        HexOperations.setXYasVertex(false); //RECOMMENDED: leave this as FALSE.
+        HexOperations.setXYasVertex(false);
 
-        HexOperations.setHeight(HEXSIZE); //Either setHeight or setSize must be run to initialize the hex
+        HexOperations.setHeight(HEXSIZE);
         HexOperations.setBorders(BORDERS);
 
         for (int i = 0; i < BSIZE; i++) {
@@ -61,10 +56,10 @@ public class GameWindow {
             for (int j = 0; j < BSIZE; j++) {
                 MapObject temp = Game.getMapObject(i, j);
                 if (temp instanceof Worm) {
-                    board[i][j] = (int) 'W';
+                    board[i][j] = "W:"+temp.getWeight();
                 }
                 if (temp instanceof Bacteria) {
-                    board[i][j] = (int) 'B';
+                    board[i][j] = "B";
                 }
             }
         }
@@ -90,10 +85,10 @@ public class GameWindow {
             for (int j = 0; j < BSIZE; j++) {
                 MapObject temp = Game.getMapObject(i, j);
                 if (temp instanceof Worm) {
-                    board[i][j] = (int) 'W';
+                    board[i][j] = "W:"+temp.getWeight();
                 }
                 if (temp instanceof Bacteria) {
-                    board[i][j] = (int) 'B';
+                    board[i][j] = "B";
                 }
 
                 if (temp == null) {

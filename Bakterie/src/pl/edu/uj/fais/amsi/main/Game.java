@@ -5,16 +5,9 @@
  */
 package pl.edu.uj.fais.amsi.main;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 import javax.swing.SwingUtilities;
-import pl.edu.uj.fais.amsi.bio.Bacteria;
-import pl.edu.uj.fais.amsi.bio.Gene;
 import pl.edu.uj.fais.amsi.bio.MapObject;
 import pl.edu.uj.fais.amsi.gfx.GameWindow;
-import pl.edu.uj.fais.amsi.map.Direction;
 import pl.edu.uj.fais.amsi.map.Map;
 
 /**
