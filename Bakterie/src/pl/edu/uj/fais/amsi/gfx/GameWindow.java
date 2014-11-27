@@ -95,6 +95,10 @@ public class GameWindow {
                 if (temp instanceof Bacteria) {
                     board[i][j] = (int) 'B';
                 }
+
+                if (temp == null) {
+                    board[i][j] = EMPTY;
+                }
             }
         }
         panel.repaint();
