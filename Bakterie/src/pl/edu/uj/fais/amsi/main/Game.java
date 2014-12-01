@@ -21,6 +21,7 @@ public class Game {
     public static GameRules rules;
 
     public static boolean runGame() {
+        GameWindow.updateBoard();
         return false;
     }
 

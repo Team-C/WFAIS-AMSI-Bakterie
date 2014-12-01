@@ -2,6 +2,7 @@ package pl.edu.uj.fais.amsi.gfx;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import pl.edu.uj.fais.amsi.main.Game;
 
 /**
  *
@@ -17,7 +18,7 @@ class MouseListener extends MouseAdapter {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        GameWindow.updateBoard();
+        Game.runGame();
         outer.repaint();
     }
 

@@ -13,7 +13,7 @@ import java.util.Properties;
 
 /**
  *
- * @author student
+ * @author Konrad Welc
  */
 public class GameRules {
     private final int GENE_MIN_RANDOM_RANGE;
