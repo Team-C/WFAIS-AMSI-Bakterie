@@ -16,7 +16,8 @@ import java.util.Properties;
  * @author Konrad Welc
  */
 public class GameRules {
-    private final int GENE_MIN_RANDOM_RANGE;
+    private final int BOARD_SIZE;
+    private final int WORM_COMBAT_DAMAGE;
     private final int GENE_MAX_RANDOM_RANGE;
     private final int WORM_STARTING_WEIGHT;
     private final int WORM_WEIGHT_TRESHOLD;
@@ -30,7 +31,8 @@ public class GameRules {
    
 
     public GameRules() {
-        GENE_MIN_RANDOM_RANGE = Load("gene_min_random_range");
+        BOARD_SIZE = Load("board_size");
+        WORM_COMBAT_DAMAGE = Load("worm_combat_damage");
         GENE_MAX_RANDOM_RANGE = Load("gene_max_random_range");
         WORM_STARTING_WEIGHT = Load("worm_starting_weight");
         WORM_WEIGHT_TRESHOLD = Load("worm_weight_threshold");
@@ -67,14 +69,18 @@ public class GameRules {
     }
     
     
-    public int getGeneMinRandomRange() {
-        return GENE_MIN_RANDOM_RANGE;
+    public int getWormCombatDamage() {
+        return WORM_COMBAT_DAMAGE;
+    }
+
+    public int getBoardSize() {
+        return BOARD_SIZE;
     }
 
     public int getGeneMaxRandomRange() {
         return GENE_MAX_RANDOM_RANGE;
     }
-
+    
     public int getWormStaringWeight() {
         return WORM_STARTING_WEIGHT;
     }
@@ -83,7 +89,7 @@ public class GameRules {
         return WORM_WEIGHT_TRESHOLD;
     }
 
-    public int getWormSpawnPerTick() {
+    public double getWormSpawnPerTick() {
         return WORM_SPAWN_PER_TICK;
     }
 
@@ -103,7 +109,7 @@ public class GameRules {
         return BACTERIA_STARTING_NUMBER;
     }
 
-    public int getBacteriaSpawnPerTick() {
+    public double getBacteriaSpawnPerTick() {
         return BACTERIA_SPAWN_PER_TICK;
     }
 

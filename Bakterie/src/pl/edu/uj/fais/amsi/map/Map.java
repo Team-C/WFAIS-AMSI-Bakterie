@@ -223,8 +223,8 @@ public class Map {
         removeDeadObjects();
 
         // spawning starting entities
-        spawnBacterias(Game.rules.getBacteriaSpawnPerTick());
-        spawnWorms(Game.rules.getWormSpawnPerTick());
+        spawnBacterias((int)Game.rules.getBacteriaSpawnPerTick());
+        spawnWorms((int)Game.rules.getWormSpawnPerTick());
     }
 
     public MapObject getMapObject(int tileId) {
