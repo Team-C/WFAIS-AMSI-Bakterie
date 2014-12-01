@@ -5,8 +5,9 @@ package pl.edu.uj.fais.amsi.map;
  * @author Wit
  */
 public enum Direction {
-    TOP,TOP_LEFT,TOP_RIGHT,BOT,BOT_LEFT,BOT_RIGHT;
-    
+
+    TOP, TOP_LEFT, TOP_RIGHT, BOT, BOT_LEFT, BOT_RIGHT;
+
     public static Direction getDir(int i) {
         switch (i) {
             case 0:
@@ -24,9 +25,9 @@ public enum Direction {
         }
         return null;
     }
-    
+
     public static int getDirNr(Direction i) {
-        if(i == null){
+        if (i == null) {
             return 0;
         }
         switch (i) {
@@ -44,5 +45,24 @@ public enum Direction {
                 return 5;
         }
         return 0;
+    }
+
+    @Override
+    public String toString() {
+        switch (this) {
+            case TOP_LEFT:
+                return "TL";
+            case TOP:
+                return "T";
+            case TOP_RIGHT:
+                return "TR";
+            case BOT_RIGHT:
+                return "BR";
+            case BOT:
+                return "B";
+            case BOT_LEFT:
+                return "BL";
+        }
+        return "???";
     }
 }

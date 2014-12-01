@@ -7,6 +7,7 @@ import pl.edu.uj.fais.amsi.bio.Bacteria;
 import pl.edu.uj.fais.amsi.bio.MapObject;
 import pl.edu.uj.fais.amsi.bio.Worm;
 import pl.edu.uj.fais.amsi.main.Game;
+import pl.edu.uj.fais.amsi.map.Direction;
 
 /**
  *
@@ -16,14 +17,14 @@ public class GameWindow {
 
     //constants and global variables
     final static Color COLOURBACK = Color.WHITE;
-    final static Color COLOURCELL = Color.ORANGE;
+    final static Color COLOURCELL = new Color(128, 128, 128, 255);//Color.ORANGE;
     final static Color COLOURGRID = Color.BLACK;
     final static Color COLOURONE = new Color(45, 136, 45, 255);
     final static Color COLOURONETXT = Color.WHITE;
     final static Color COLOURTWO = new Color(152, 219, 245, 255);
     final static Color COLOURTWOTXT = new Color(255, 88, 88);
     final static String EMPTY = "";
-    final static int BSIZE = 15; //board size.
+    final static int BSIZE = Game.rules.getBoardSize(); //board size.
     final static int HEXSIZE = 60;	//hex size in pixels
     final static int BORDERS = 15;
     final static int SCRSIZE = HEXSIZE * (BSIZE + 1) + BORDERS * 3; //screen size (vertical dimension).
@@ -55,10 +56,10 @@ public class GameWindow {
             for (int j = 0; j < BSIZE; j++) {
                 MapObject temp = Game.getMapObject(i, j);
                 if (temp instanceof Worm) {
-                    board[i][j] = "W:"+temp.getWeight();
+                    board[i][j] = "W:" + temp.getWeight();
                 }
                 if (temp instanceof Bacteria) {
-                    board[i][j] = "B";
+                    board[i][j] = "(B)";
                 }
             }
         }
@@ -84,10 +85,16 @@ public class GameWindow {
             for (int j = 0; j < BSIZE; j++) {
                 MapObject temp = Game.getMapObject(i, j);
                 if (temp instanceof Worm) {
-                    board[i][j] = "W:"+temp.getWeight();
+                    Worm worm = (Worm) Game.getMapObject(i, j);
+                    Direction wormDir = worm.getDirection();
+                    if (wormDir == null) {
+                        board[i][j] = "W:" + worm.getWeight() + ":";
+                    } else {
+                        board[i][j] = "W:" + worm.getWeight() + ":" + wormDir.toString();
+                    }
                 }
                 if (temp instanceof Bacteria) {
-                    board[i][j] = "B";
+                    board[i][j] = "(B)";
                 }
 
                 if (temp == null) {

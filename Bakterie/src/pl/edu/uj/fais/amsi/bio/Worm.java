@@ -35,8 +35,8 @@ public class Worm extends MapObject {
     @Override
     public void updateOnColision(MapObject object) {
         if (object instanceof Worm) {//Bite, Don't Move
-            object.decreaseWeight(5);
-            this.increaseWeight(5);
+            object.decreaseWeight(Game.rules.getWormCombatDamage());
+            this.increaseWeight(Game.rules.getWormCombatDamage());
             Map.setMapObject(object);
             System.out.println("    FIGHT! FIGHT! FIGHT!");
         }

@@ -28,6 +28,7 @@ class DrawingPanel extends JPanel {
         addMouseListener(ml);
     }
 
+    @Override
     public void paintComponent(Graphics g) {
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
@@ -42,8 +43,8 @@ class DrawingPanel extends JPanel {
         //fill in hexes
         for (int i = 0; i < BSIZE; i++) {
             for (int j = 0; j < BSIZE; j++) {
-                int w = (int) (font.getStringBounds(board[i][j], frc).getWidth());
-                int h = (int) (font.getStringBounds(board[i][j], frc).getHeight());
+                double w = (font.getStringBounds(board[i][j], frc).getWidth());
+                double h = (font.getStringBounds(board[i][j], frc).getHeight());
                 HexOperations.fillHex(i, j, w, h, board[i][j], g2);
             }
         }

@@ -26,6 +26,8 @@ public class Map {
 
     private static final int size_x = 15;
     private static final int size_y = 15;
+    private double bacteriaSpawn = 0.0;
+    private double wormSpawn = 0.0;
 
     private static final MapObject tiles[] = new MapObject[size_x * size_y];
 
@@ -37,13 +39,6 @@ public class Map {
         // spawning starting entities
         spawnBacterias(Game.rules.getBacteriaStartingNumber());
         spawnWorms(Game.rules.getWormStartingNumber());
-
-//        debugPrint();
-//        for (int i = 0; i < 10000; i++) {
-//            updateOnTick();
-//            System.out.println("-----TICK-----");
-//        }
-//        debugPrint();
     }
 
     private boolean isValidLocation(int tileId) {
@@ -223,8 +218,16 @@ public class Map {
         removeDeadObjects();
 
         // spawning starting entities
-        spawnBacterias((int)Game.rules.getBacteriaSpawnPerTick());
-        spawnWorms((int)Game.rules.getWormSpawnPerTick());
+        bacteriaSpawn += Game.rules.getBacteriaSpawnPerTick();
+        if (bacteriaSpawn >= 1.0) {
+            spawnBacterias((int) bacteriaSpawn);
+            bacteriaSpawn = bacteriaSpawn % 1;
+        }
+        wormSpawn += Game.rules.getWormSpawnPerTick();
+        if (wormSpawn >= 1.0) {
+            spawnWorms((int) wormSpawn);
+            wormSpawn = wormSpawn % 1;
+        }
     }
 
     public MapObject getMapObject(int tileId) {

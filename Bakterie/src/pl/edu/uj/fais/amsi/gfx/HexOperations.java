@@ -82,20 +82,20 @@ public class HexOperations {
         g2.drawPolygon(poly);
     }
 
-    public static void fillHex(int i, int j, int wi, int hi, String n, Graphics2D g2) {
+    public static void fillHex(int i, int j, double wi, double hi, String n, Graphics2D g2) {
         int x = i * (s + t);
         int y = j * h + (i % 2) * h / 2;
-        if (n.contains("B")) {
+        if (n.contains("(B)")) {
             g2.setColor(GameWindow.COLOURONE);
             g2.fillPolygon(hex(x, y));
             g2.setColor(GameWindow.COLOURONETXT);
-            g2.drawString(n, x + r + BORDERS - wi / 2, y + r + BORDERS + 4 + hi / 2);
+            g2.drawString(n, (int) (x + r + BORDERS - wi / 2), (int) (y + r + BORDERS + 4));
         }
         if (n.contains("W")) {
             g2.setColor(GameWindow.COLOURTWO);
             g2.fillPolygon(hex(x, y));
             g2.setColor(GameWindow.COLOURTWOTXT);
-            g2.drawString(n, x + r + BORDERS - wi / 2, y + r + BORDERS + 4 + hi / 2);
+            g2.drawString(n, (int) (x + r + BORDERS - wi / 2), (int) (y + r + BORDERS + 4));
         }
     }
 }

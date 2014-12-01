@@ -9,9 +9,6 @@ import pl.edu.uj.fais.amsi.main.Game;
 public class Bacteria extends MapObject {
 
     //Very Empty Class
-    public Bacteria() {
-        super(Game.rules.getBacteriaStartingWeight());
-    }
 
     public Bacteria(int objectPosition) {
         super(Game.rules.getBacteriaStartingWeight(), objectPosition);
