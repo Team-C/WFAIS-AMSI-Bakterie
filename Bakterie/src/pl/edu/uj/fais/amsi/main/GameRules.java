@@ -27,7 +27,6 @@ public class GameRules {
     private final int BACTERIA_STARTING_WEIGHT;
     private final int BACTERIA_STARTING_NUMBER;
     private final int BACTERIA_SPAWN_PER_TICK;
-    private final int TICK_INTERVAL_IN_SECONDS;
    
 
     public GameRules() {
@@ -42,7 +41,6 @@ public class GameRules {
         BACTERIA_STARTING_WEIGHT = Load("bacteria_starting_weight");
         BACTERIA_STARTING_NUMBER = Load("bacteria_starting_number");
         BACTERIA_SPAWN_PER_TICK = Load("bacteria_spawn_per_tick");
-        TICK_INTERVAL_IN_SECONDS = Load("tick_interval_in_seconds");
     }
 
     public int Load(String var){
@@ -111,9 +109,5 @@ public class GameRules {
 
     public double getBacteriaSpawnPerTick() {
         return BACTERIA_SPAWN_PER_TICK;
-    }
-
-    public int getTickIntervalInSeconds() {
-        return TICK_INTERVAL_IN_SECONDS;
     }
 }

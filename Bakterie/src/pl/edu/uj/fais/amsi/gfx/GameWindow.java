@@ -30,7 +30,6 @@ public class GameWindow {
 
     public static String[][] board = new String[BSIZE][BSIZE];
     private static DrawingPanel panel = new DrawingPanel();
-    final static int WAITTIME = Game.rules.getTickIntervalInSeconds();
 
     public GameWindow() {
 
