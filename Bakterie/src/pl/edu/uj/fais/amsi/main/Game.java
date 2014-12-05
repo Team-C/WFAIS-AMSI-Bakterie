@@ -20,9 +20,12 @@ public class Game {
     private static Map map;
     public static GameRules rules;
 
-    public static boolean runGame() {
-        GameWindow.updateBoard();
-        return false;
+    public static void runGame() {
+        GameWindow.updateBoard(1);
+    }
+
+    public static void runGame(int nr) {
+        GameWindow.updateBoard(10);
     }
 
     public static void main(String[] args) {
@@ -38,6 +41,12 @@ public class Game {
 
     public static void updateMap() {
         map.updateOnTick();
+    }
+
+    public static void updateMap(int nr) {
+        for (int i = 0; i < nr; i++) {
+            map.updateOnTick();
+        }
     }
 
     public static MapObject getMapObject(int x, int y) {

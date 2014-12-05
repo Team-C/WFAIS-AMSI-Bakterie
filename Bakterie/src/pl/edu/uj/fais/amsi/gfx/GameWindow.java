@@ -79,8 +79,8 @@ public class GameWindow {
         frame.setVisible(true);
     }
 
-    public static void updateBoard() {
-        Game.updateMap();
+    public static void updateBoard(int nr) {
+        Game.updateMap(nr);
         for (int i = 0; i < BSIZE; i++) {
             for (int j = 0; j < BSIZE; j++) {
                 MapObject temp = Game.getMapObject(i, j);

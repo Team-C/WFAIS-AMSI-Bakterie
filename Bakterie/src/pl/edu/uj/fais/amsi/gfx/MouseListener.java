@@ -18,8 +18,14 @@ class MouseListener extends MouseAdapter {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        Game.runGame();
-        outer.repaint();
+        if (e.getButton() == MouseEvent.BUTTON1) {
+            Game.runGame();
+            outer.repaint();
+        }
+        if (e.getButton() == MouseEvent.BUTTON3) {
+            Game.runGame(10);
+            outer.repaint();
+        }
     }
 
 }

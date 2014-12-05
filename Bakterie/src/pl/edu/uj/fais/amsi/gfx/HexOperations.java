@@ -1,7 +1,6 @@
 package pl.edu.uj.fais.amsi.gfx;
 
 import java.awt.Graphics2D;
-import java.awt.Point;
 import java.awt.Polygon;
 
 /**
@@ -31,18 +30,6 @@ public class HexOperations {
 
     public static void setBorders(int b) {
         BORDERS = b;
-    }
-
-    /**
-     * This functions takes the Side length in pixels and uses that as the basic
-     * dimension of the hex. It calculates all other needed constants from this
-     * dimension.
-     */
-    public static void setSide(int side) {
-        s = side;
-        t = (int) (s / 2);			//t = s sin(30) = (int) CalculateH(s);
-        r = (int) (s * 0.8660254037844);	//r = s cos(30) = (int) CalculateR(s); 
-        h = 2 * r;
     }
 
     public static void setHeight(int height) {
