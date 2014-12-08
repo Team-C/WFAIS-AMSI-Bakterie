@@ -2,6 +2,7 @@ package pl.edu.uj.fais.amsi.gfx;
 
 import java.awt.Graphics2D;
 import java.awt.Polygon;
+import java.awt.Color;
 
 /**
  *
@@ -83,6 +84,58 @@ public class HexOperations {
             g2.fillPolygon(hex(x, y));
             g2.setColor(GameWindow.COLOURTWOTXT);
             g2.drawString(n, (int) (x + r + BORDERS - wi / 2), (int) (y + r + BORDERS + 4));
+        }
+    }
+
+    public static void drawDirection(int i, int j, double wi, double hi, String n, Graphics2D g2) {
+        int xFrom, yFrom;
+        int xTo = (int)((i * (s + t)) + s + BORDERS);
+        int yTo = (int)((j * h + (i % 2) * h / 2) + r + BORDERS);
+        if (n.contains("W")) {
+            g2.setColor(GameWindow.COLOURDIRARROW);
+            if (n.contains(":TL")) {
+                xFrom = (int)(((i+1) * (s + t)) + s + BORDERS);
+                yFrom = (int)((j * h + (i % 2) * h / 2) + r + h/2 + BORDERS);
+                g2.drawLine(xTo, yTo, xFrom, yFrom);
+                g2.drawLine(xTo, yTo, xTo+10, yTo+18);
+                g2.drawLine(xTo, yTo, xTo+20, yTo);
+                g2.fillOval(xFrom-3, yFrom-3, 6, 6);
+            } else if (n.contains(":TR")) {
+                xFrom = (int)(((i-1) * (s + t)) + s + BORDERS);
+                yFrom = (int)((j * h + (i % 2) * h / 2) + r + h/2 + BORDERS);
+                g2.drawLine(xTo, yTo, xTo-10, yTo+18);
+                g2.drawLine(xTo, yTo, xTo-20, yTo);
+                g2.drawLine(xTo, yTo, xFrom, yFrom);
+                g2.fillOval(xFrom-3, yFrom-3, 6, 6);
+            } else if (n.contains(":BL")) {
+                xFrom = (int)(((i+1) * (s + t)) + s + BORDERS);
+                yFrom = (int)(((j-1) * h + (i % 2) * h / 2) + r + h/2 + BORDERS);
+                g2.drawLine(xTo, yTo, xFrom, yFrom);
+                g2.drawLine(xTo, yTo, xTo+10, yTo-18);
+                g2.drawLine(xTo, yTo, xTo+20, yTo);
+                g2.fillOval(xFrom-3, yFrom-3, 6, 6);
+            } else if (n.contains(":BR")) {
+                xFrom = (int)(((i-1) * (s + t)) + s + BORDERS);
+                yFrom = (int)(((j-1) * h + (i % 2) * h / 2) + r + h/2 + BORDERS);
+                g2.drawLine(xTo, yTo, xFrom, yFrom);
+                g2.drawLine(xTo, yTo, xTo-10, yTo-18);
+                g2.drawLine(xTo, yTo, xTo-20, yTo);
+                g2.fillOval(xFrom-3, yFrom-3, 6, 6);
+            } else if (n.contains(":T")) {
+                xFrom = (int)((i * (s + t)) + s + BORDERS);
+                yFrom = (int)(((j+1) * h + (i % 2) * h / 2) + r + BORDERS);
+                g2.drawLine(xTo, yTo, xFrom, yFrom);
+                g2.drawLine(xTo, yTo, xTo+10, yTo+18);
+                g2.drawLine(xTo, yTo, xTo-10, yTo+18);
+                g2.fillOval(xFrom-3, yFrom-3, 6, 6);
+            } else if (n.contains(":B")) {
+                xFrom = (int)((i * (s + t)) + s + BORDERS);
+                yFrom = (int)(((j-1) * h + (i % 2) * h / 2) + r + BORDERS);
+                g2.drawLine(xTo, yTo, xFrom, yFrom);
+                g2.drawLine(xTo, yTo, xTo+10, yTo-18);
+                g2.drawLine(xTo, yTo, xTo-10, yTo-18);
+                g2.fillOval(xFrom-3, yFrom-3, 6, 6);
+            }
         }
     }
 }

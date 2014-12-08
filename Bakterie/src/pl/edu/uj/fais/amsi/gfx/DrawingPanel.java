@@ -48,6 +48,14 @@ class DrawingPanel extends JPanel {
                 HexOperations.fillHex(i, j, w, h, board[i][j], g2);
             }
         }
+        //draw direction arrows
+        for (int i = 0; i < BSIZE; i++) {
+            for (int j = 0; j < BSIZE; j++) {
+                double w = (font.getStringBounds(board[i][j], frc).getWidth());
+                double h = (font.getStringBounds(board[i][j], frc).getHeight());
+                HexOperations.drawDirection(i, j, w, h, board[i][j], g2);
+            }
+        }
     }
 
 }

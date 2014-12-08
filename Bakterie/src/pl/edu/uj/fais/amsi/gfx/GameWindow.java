@@ -23,6 +23,7 @@ public class GameWindow {
     final static Color COLOURONETXT = Color.WHITE;
     final static Color COLOURTWO = new Color(152, 219, 245, 255);
     final static Color COLOURTWOTXT = new Color(255, 88, 88);
+    final static Color COLOURDIRARROW = new Color(0, 0, 255);
     final static String EMPTY = "";
     final static int BSIZE = Game.rules.getBoardSize(); //board size.
     final static int HEXSIZE = 60;	//hex size in pixels
