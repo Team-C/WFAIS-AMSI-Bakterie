@@ -87,7 +87,7 @@ public class HexOperations {
             g2.fillPolygon(hex(x, y));
             //Painting Text
             g2.setColor(GameWindow.COLOURONETXT);
-            g2.drawString(n, (int) (x + r + BORDERS - wi / 2), (int) (y + r + BORDERS + 4));
+            g2.drawString(n, (int) (x + r + BORDERS - wi / 4), (int) (y + r + BORDERS + hi / 4));
         }
         if (temp instanceof Worm) {
             //Filling Hex
@@ -141,7 +141,7 @@ public class HexOperations {
             }
             //Painting Text
             g2.setColor(GameWindow.COLOURTWOTXT);
-            g2.drawString(n, (int) (x + r + BORDERS - wi / 2), (int) (y + r + BORDERS + 4));
+            g2.drawString(n, (int) (x + r + BORDERS - wi / 3), (int) (y + r + BORDERS + hi / 3));
         }
     }
 }
