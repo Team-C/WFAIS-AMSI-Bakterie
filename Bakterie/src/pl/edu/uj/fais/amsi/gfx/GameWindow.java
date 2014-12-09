@@ -89,9 +89,9 @@ public class GameWindow {
                     Worm worm = (Worm) Game.getMapObject(i, j);
                     Direction wormDir = worm.getDirection();
                     if (wormDir == null) {
-                        board[i][j] = "W:" + worm.getWeight() + ":";
+                        board[i][j] = "W:" + worm.getWeight();// + ":";
                     } else {
-                        board[i][j] = "W:" + worm.getWeight() + ":" + wormDir.toString();
+                        board[i][j] = "W:" + worm.getWeight();// + ":" + wormDir.toString();
                     }
                 }
                 if (temp instanceof Bacteria) {

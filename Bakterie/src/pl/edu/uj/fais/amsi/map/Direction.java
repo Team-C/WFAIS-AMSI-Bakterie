@@ -6,7 +6,7 @@ package pl.edu.uj.fais.amsi.map;
  */
 public enum Direction {
 
-    TOP, TOP_LEFT, TOP_RIGHT, BOT, BOT_LEFT, BOT_RIGHT;
+    TOP, TOP_LEFT, TOP_RIGHT, BOT, BOT_LEFT, BOT_RIGHT, INIT;
 
     public static Direction getDir(int i) {
         switch (i) {
@@ -62,6 +62,8 @@ public enum Direction {
                 return "B";
             case BOT_LEFT:
                 return "BL";
+            case INIT:
+                return "I";
         }
         return "???";
     }

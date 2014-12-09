@@ -15,11 +15,13 @@ public class Worm extends MapObject {
 
     public Worm() {
         super(Game.rules.getWormStaringWeight());
+        this.wormDirection = Direction.INIT;
         this.gene = new Gene();
     }
 
     public Worm(int objectPosition) {
         super(Game.rules.getWormStaringWeight(), objectPosition);
+        this.wormDirection = Direction.INIT;
         this.gene = new Gene();
     }
 
